@@ -17,12 +17,14 @@
             } else {
               resolve("hat geklappt!");
             }
-          }, 300);
+          }, 5000);
         });
       }
 
-      function usePromise() {
-        let prom = getPromise();
+      async function usePromise() {
+        console.log("Warte auf Promise...");
+        let prom = await getPromise();
+        console.log("Promise erfüllt.");
         console.log("Promise erhalten:", prom);
       }
     </script>
