@@ -6,23 +6,34 @@
     <title>FirebaseStorage</title>
 
     <script>
+      //   async function fetchDataJson() {
+      //     let response = await fetch("db.json");
+      //     let responseAsJson = await response.json();
+      //     console.log(responseAsJson);
+      //   }
+
+      //   async function fetchDataText() {
+      //     let response = await fetch('h1.txt');
+      //     let responseAsText = await response.text();
+      //     document.getElementById("content").innerHTML = responseAsText;
+      //   }
+
+let fruits = [];
+
       async function fetchDataJson() {
-        let response = await fetch("db.json");
+        let response = await fetch('https://www.fruityvice.com/api/fruit/all');
         let responseAsJson = await response.json();
-        console.log(responseAsJson);
+        fruits = responseAsJson;
+        debugger;
+        console.table(responseAsJson);
+        
+        // JSON formatiert im HTML anzeigen
+        document.getElementById("content").innerHTML = `<pre>${JSON.stringify(responseAsJson, null, 2)}</pre>`;
       }
-
-      async function fetchDataText() {
-        let response = await fetch('h1.txt');
-        let responseAsText = await response.text();
-        document.getElementById("content").innerHTML = responseAsText; 
-      }
-
-
-
     </script>
   </head>
-  <body onload="fetchDataJson(); fetchDataText();">
+  <body onload="fetchDataJson();">
+    <h1>Fruits</h1>
     <div id="content"></div>
   </body>
 </html>
